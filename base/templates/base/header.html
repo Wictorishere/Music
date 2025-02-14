@@ -1,0 +1,337 @@
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0px;
+            font-family: 'Lalezar', sans-serif;
+        }
+
+        nav {
+            font-size: 23px;
+            margin: 0px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            background-color: #00ddff;
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        nav a, li, form {
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+            padding: 25px;
+            display: block;
+            text-align: center;
+            line-height: 60px;
+            height: 100%;
+        }
+
+        nav li:hover {
+            background-color: #1db7cfa3;
+        }
+
+        form {
+            margin: 0px;
+            padding-top: 53px;
+        }
+
+        #search {
+            text-align: right;
+            border-radius: 17px;
+            height: 32px;
+            font-family: 'Lalezar';
+            font-size: 16px;
+            width: 230px;
+            text-align: center;
+            border: none;
+            outline: none;
+        }
+
+        #search:focus {
+            border: 2px solid #000000;
+            box-shadow: 0 1px 20px rgb(255, 255, 255),
+                        0px -1px 20px rgb(255, 255, 255);
+        }
+
+        #wicmusic{
+            padding-top: 30px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /* استایل برای دیوها */
+        .dropdown {
+            position: fixed; /* برای اینکه در وسط صفحه ثابت شود */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* برای مرکز کردن دیو */
+            background-color: #00d0ff;
+            padding: 20px;
+            width: 500px;
+            border-radius: 5px;
+            display: none;
+            z-index: 100; /* برای اینکه از سایر محتوا بالاتر باشد */
+            box-shadow: 0 4px 20px rgba(255, 0, 238, 0.8); /* سایه صورتی */
+        }
+
+        /* دکمه بستن (ضربدر) */
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: white;
+            background: none;
+            border: none;
+        }
+
+        /* پس‌زمینه تاریک */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* تاریک کردن صفحه */
+            z-index: 50; /* زیر دیوها */
+            display: none; /* پیش‌فرض مخفی */
+        }
+        .dropdowns{
+            display: inline-block;
+            margin: 10px;
+            background-color: rgba(35, 192, 231, 0.696);
+            box-shadow: 0px 0px 15px rgb(0, 0, 0); /* سایه صورتی */
+        }
+        .dropdowns img{
+            width: 100px; height: 100px;
+           
+        }
+        .dropdowns p{
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+
+    </style>
+
+    <nav>
+        <ul>
+            <h1><a href="" id="wicmusic">WicMusic</a></h1>
+            <form action="" method="post">
+                <input id="search" type="text" name="search" placeholder="...جستجوی آهنگ یا خواننده">
+            </form>
+            <li id="playlist">پلی لیست</li>
+            <li id="style">سبک</li>
+            <li id="dj">دی جی</li>
+            <li id="artist">خواننده</li>
+            
+        </ul>
+    </nav>
+
+    <!-- پس‌زمینه تاریک -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- دیوها برای هر بخش -->
+    <div id="playlists" class="dropdown">
+        <button class="close-btn" onclick="closeDropdown('playlists')">×</button>
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/NewMusic.jpg" alt="">
+            <p>جدیدترین</p>
+        </a></div>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/BestMusic.jpg" alt="">
+            <p>برترین‌ها</p>
+        </a></div>
+
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/GymMusic.jpg" alt="">
+            <p>باشگاه</p>
+        </a></div>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/ChillMusic.png" alt="">
+            <p>چیل</p>
+        </a></div>
+        
+        
+        <div class="dropdowns" style="margin-left: 26.6%;"><a href="" style="text-decoration: none;">
+            <img src="/img/PartyMusic.jpg" alt="">
+            <p>مهمونی</p>
+        </a></div>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/all.jpg" alt="">
+            <p>همه</p>
+        </a></div>
+    </div>
+
+    <div id="styles" class="dropdown">
+        <button class="close-btn" onclick="closeDropdown('styles')">×</button>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/PopMusic.jpg" alt="">
+            <p>پاپ</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/HipHopMusic.jpg" alt="">
+            <p>هیپ هاپ</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/phonk--17904.jpg" alt="">
+            <p>فانک</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/RockMusic.jpeg" alt="">
+            <p>راک</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/classicmusic.jpg" alt="">
+            <p>کلاسیک</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/JazMusic.png" alt="">
+            <p>جاز</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/ElectronicMusic.png" alt="">
+            <p>الکترونیک</p>
+        </a></div>
+
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/r&bMusic.jpg" alt="">
+            <p>آر اند بی</p>
+        </a></div>
+    </div>
+
+
+    <div id="djs" class="dropdown">
+        <button class="close-btn" onclick="closeDropdown('djs')">×</button>
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/AlanWalker.jpg" alt="">
+            <p>الن واکر</p>
+        </a></div>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/Khaled.jpg" alt="">
+            <p>دی جی خالد</p>
+        </a></div>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/DavidGuetta.jpg" alt="">
+            <p>داوید گوئتا</p>
+        </a></div>
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/img/marshmelo.jpg" alt="">
+            <p>مارشملو</p>
+        </a></div>
+        
+        <div class="dropdowns" style="margin-left: 38%;"><a href="" style="text-decoration: none;">
+            <img src="/img/all.jpg" alt="">
+            <p>همه</p>
+        </a></div>
+    </div>
+    
+
+    <div id="artists" class="dropdown">
+        <button class="close-btn" onclick="closeDropdown('artists')">×</button>
+        {% for artist in artists|slice:":7" %}
+                <div class="dropdowns"><a href="" style="text-decoration: none;">
+            {% if artist.image %}
+                <img src="{{ artist.image.url }}" alt="{{ artist.name }}">
+            {% else %}
+                <p>No image</p>
+                {% endif %}   
+                <p>{{artist.name}}</p>
+            </a></div>
+        {% endfor %}
+        
+        <div class="dropdowns"><a href="" style="text-decoration: none;">
+            <img src="/media/all.jpg" alt="">
+            <p>همه</p>
+        </a></div>
+        
+    </div>
+
+    
+
+    <script>
+        // گرفتن المنت‌های لیست و دیوهای مربوطه
+        const artistBtn = document.getElementById('artist');
+        const djBtn = document.getElementById('dj');
+        const styleBtn = document.getElementById('style');
+        const playlistBtn = document.getElementById('playlist');
+
+        const artistsDiv = document.getElementById('artists');
+        const djsDiv = document.getElementById('djs');
+        const stylesDiv = document.getElementById('styles');
+        const playlistsDiv = document.getElementById('playlists');
+        const overlay = document.getElementById('overlay');
+
+        // اضافه کردن رویداد کلیک برای هر بخش
+        artistBtn.addEventListener('click', function() {
+            toggleDropdown(artistsDiv);
+        });
+
+        djBtn.addEventListener('click', function() {
+            toggleDropdown(djsDiv);
+        });
+
+        styleBtn.addEventListener('click', function() {
+            toggleDropdown(stylesDiv);
+        });
+
+        playlistBtn.addEventListener('click', function() {
+            toggleDropdown(playlistsDiv);
+        });
+
+        // توابع برای نمایش یا مخفی کردن دیوها
+        function toggleDropdown(div) {
+            // مخفی کردن همه دیوها
+            const allDivs = [artistsDiv, djsDiv, stylesDiv, playlistsDiv];
+            allDivs.forEach(d => {
+                if (d !== div) d.style.display = 'none';
+            });
+
+            // نمایش پس‌زمینه تاریک
+            overlay.style.display = 'block';
+
+            // تغییر نمایش دیو انتخابی
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'block';
+            } else {
+                div.style.display = 'none';
+                overlay.style.display = 'none'; // پس از بستن دیو، پس‌زمینه تاریک را مخفی می‌کنیم
+            }
+        }
+
+        // بستن دیو
+        function closeDropdown(id) {
+            document.getElementById(id).style.display = 'none';
+            overlay.style.display = 'none'; // مخفی کردن پس‌زمینه تاریک
+        }
+    </script>
+
